@@ -8,6 +8,8 @@ TO DO:
 error handling
 defensive coding
 function documentation
+refactoring
+
 */
 const sessionManager = require('./sessionManager');
 
