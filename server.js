@@ -1,6 +1,9 @@
 /*
-WebSockets Reflector
+
+WebSockets Broker
 Main application file
+Written by Cliff Rosen
+
 */
 const sessionManager = require('./sessionManager');
 
