@@ -7,7 +7,7 @@ Written by Cliff Rosen
 TO DO:
 error handling
 defensive coding
-
+function documentation
 */
 const sessionManager = require('./sessionManager');
 
