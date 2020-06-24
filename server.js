@@ -4,6 +4,10 @@ WebSockets Broker
 Main application file
 Written by Cliff Rosen
 
+TO DO:
+error handling
+defensive coding
+
 */
 const sessionManager = require('./sessionManager');
 
