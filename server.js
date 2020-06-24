@@ -1,8 +1,9 @@
 /*
 
 WebSockets Broker
-Main application file
 Written by Cliff Rosen
+
+Main application file
 
 TO DO:
 error handling
