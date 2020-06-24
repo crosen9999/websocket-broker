@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        var socket = new WebSocket('ws://localhost:8000');
+        socket.onmessage = function(event) {
+            console.log('Got message:', event.data);
+            try {
+                message = JSON.parse(event.data).command;
+            } catch(e) {
+                message = event.data;
+            };
+            document.getElementById("receive").innerHTML = message + '<br>' + document.getElementById("receive").innerHTML;
+        };
+        socket.onopen = function(event) {
+            console.log('WebSocket is now open using url ' + socket.url);
+        };
+        socket.onclose = function(event) {
+            console.log('WebSocket has been closed');
+        };
+
+        function sendData() {
+            socket.send(document.getElementById("send").value);
+        }    
+
+        function requestConnection() {
+            let message = {};
+            message.type = "SESSION";
+            message.client = document.getElementById("client").value;
+            message.target = document.getElementById("target").value;
+            message.key = document.getElementById("key").value;
+            socket.send(JSON.stringify(message));
+            console.log(JSON.stringify(message));
+        }
+
+        function sendCommand() {
+            let message = {};
+            message.type = "COMMAND";
+            message.command = document.getElementById("command").value;
+            socket.send(JSON.stringify(message));
+        }
+
+</script>
+
+</head>
+<body>
+<!--
+    Transmit: <input id="send"></input> <button onclick="sendData()">SEND</button><br>
+    Received: <p id="receive"></p><br>
+-->
+    <br>
+    <button onclick="requestConnection()">Request Connection</button>
+    <br>
+    Client ID: <input id="client"></input><br>
+    Target ID: <input id="target"></input><br>
+    Shared Key: <input id="key"></input><br>
+    <br>
+    <button onclick="sendCommand()">Send Command</button><br>
+    Command: <input id="command"></input><br>
+    <hr>
+    Received: <p id="receive"></p><br>
+</body>
+</html>
