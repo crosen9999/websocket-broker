@@ -1,3 +1,7 @@
+/*
+WebSockets Reflector
+Main application file
+*/
 const sessionManager = require('./sessionManager');
 
 const app = require('express')();
